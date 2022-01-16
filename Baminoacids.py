@@ -5,4 +5,13 @@ weightedstring should read from masstable.txt. It's helpful to have those masses
 """
 
 def weightedstring(protein):
-  pass
+  dct = {}
+  weight = 0
+  with open("masstable.txt") as file:
+    for line in file:
+      (key, value) = line.split(" ")
+      dct[key] = (float(value[:-2]))
+  lst = [char for char in protein]
+  for i in lst:
+    weight += dct[i] 
+  print(weight)
